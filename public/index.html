@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Node/Express/MySQL/Angular Product Demo</title>
+    <title>Angular Crud</title>
       <!--Import bootstrap.css-->
       <link type="text/css" rel="stylesheet" href="resources/css/bootstrap.min.css" />
 
@@ -43,6 +43,21 @@
         <div class="">
             <h3 align="center">INFORMACION DE ESTUDIANTES</h3>
 			<a class="btn btn-primary " data-toggle="modal" data-target="#myModal" ng-click="showCreateForm()">Agregar estudiante</a>
+			</p>
+				<div class="row">
+			        <div class="col-sm-6 col-sm-offset-0">
+			            <div id="imaginary_container"> 
+			                <div class="input-group stylish-input-group">
+			                    <input  ng-model="search" type="text" class="form-control"  placeholder="Buscar registro" >
+			                    <span class="input-group-addon">
+			                        <button type="submit">
+			                            <span class="glyphicon glyphicon-search"></span>
+			                        </button>  
+			                    </span>
+			                </div>
+			            </div>
+			        </div>
+				</div>
 			<!-- table that shows product record list -->
 			<table class="table table-hover">
 				<thead>
@@ -67,19 +82,19 @@
 						<td>{{ d.carrera }}</td>
 						<td class="text-align-center">{{ d.edad }}</td>
 						<td align="center">
-							<a ng-click="readOne(d.id)" class="btn btn-success btn-sm" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-edit" aria-hidden="true"> Edit</span></a>
-							<a class="btn btn-danger btn-sm" data-toggle="modal" data-target="#confirm{{d.id}}"><span class="glyphicon glyphicon-remove" aria-hidden="true"> Delete</span></a>
+							<a ng-click="readOne(d.id)" class="btn btn-success btn-sm" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-edit" aria-hidden="true"> Editar</span></a>
+							<a class="btn btn-danger btn-sm" data-toggle="modal" data-target="#confirm{{d.id}}"><span class="glyphicon glyphicon-remove" aria-hidden="true"> Eliminar</span></a>
 							<!--Are you sure modal-->
 							<div class="modal" id="confirm{{d.id}}" tabindex="-1" role="dialog">
 							  <div class="modal-dialog">
 								<div class="modal-content">
 								  <div class="modal-header">
 									<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-									<h4 class="modal-title">Confirm</h4>
+									<h4 class="modal-title">comfirmar</h4>
 								  </div>
 								  <div class="modal-body">
 									  <div><b style='color: red'>{{modalstatustext}}</b></div>
-									<p>Are you sure you want to delete this record?</p>
+									<p>Seguro quiere eliminar el registro?</p>
 									<div ng-show="loader.loading">Loading...</div>
 								  </div>
 								  <div class="modal-footer">
@@ -120,13 +135,13 @@
           <div><b style='color: red'>{{modalstatustext}}</b></div>
 		<form id="form-dinminder">
 				<div class="form-group">
-					<label for="name" class="control-label">Primer nombre</label>
-					<input ng-model="name" type="text" class="form-control" id="form-name" placeholder="ingresar primer nombre......">
+					<label for="nombre" class="control-label">Nombres</label>
+					<input ng-model="nombre" type="text" class="form-control" id="form-nombre" placeholder="ingresar primer nombre......">
 
 				</div>
 				<div class="form-group">
-					<label for="lastname" class="control-label">segundo nombre</label>
-					<input ng-model="lastname" type="text" class="form-control" placeholder="apellidos..">
+					<label for="apellidos" class="control-label">Apellidos</label>
+					<input ng-model="apellidos" type="text" class="form-control" placeholder="apellidos..">
 
 				</div>
 				<div class="form-group">

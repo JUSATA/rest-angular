@@ -24,7 +24,7 @@ app.controller('productCTRL', function ($scope, $http) {
     $scope.clearForm = function () {
         $scope.id = "";
         $scope.name = "";
-        $scope.lastname = "";
+        $scope.apellidos = "";
         $scope.carrera = "";
         $scope.age = "";
         $scope.modalstatustext = "";
@@ -70,7 +70,7 @@ app.controller('productCTRL', function ($scope, $http) {
         $scope.hideFormFields();
 
 
-        $('#modal-product-title').text("Edit Student");
+        $('#modal-product-title').text("Editar eStudiant");
 
         $('#btn-update-product').show();
 
@@ -87,7 +87,8 @@ app.controller('productCTRL', function ($scope, $http) {
                 $scope.id = data.product[0].id;
                 $scope.nombre = data.product[0].nombre;
                 $scope.apellidos = data.product[0].apellidos;
-                $scope.edad = data.product[0].edad;
+                $scope.carrera = data.product[0].carrera;
+                $scope.age = data.product[0].edad;
 
 
                 $('#myModal').modal('show');
@@ -133,6 +134,7 @@ app.controller('productCTRL', function ($scope, $http) {
             'id' : $scope.id,
             'name' : $scope.name,
             'lastname' : $scope.lastname,
+            'carrera' : $scope.carrera,
             'age' : $scope.age
         })
             .success(function (data, status, headers, config) {
@@ -161,7 +163,7 @@ app.controller('productCTRL', function ($scope, $http) {
                 $scope.getAll();
             })
             .error(function (data, status, headers, config) {
-                $scope.modalstatustext = "Unable to delete data!";
+                $scope.modalstatustext = "imposible!";
                 $scope.getAll();
             });
     };

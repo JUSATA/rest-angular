@@ -67,21 +67,22 @@ app.put('/api/update', function (req, res) {
     var id = req.body.id;
     var name = req.body.name;
     var lastname = req.body.lastname;
+    var carrera = req.body.carrera;
     var age = req.body.age;
     var data = {
         "error": 1,
         "product": ""
     };
 	console.log('PUT Request :: /update: ' + id);
-    if (!!id && !!name && !!lastname && !!age) {
+    if (!!id && !!name && !!lastname && !!age && !!carrera) {
 		pool.getConnection(function (err, connection) {
-			connection.query("UPDATE estudiantes SET name = ?, lastname = ?, age = ? WHERE id=?",[name,  lastname, age, id], function (err, rows, fields) {
+			connection.query("UPDATE estudiantes SET nombre = ?, apellidos = ?, carrera = ?, edad = ? WHERE id=?",[name,  lastname,carrera, age, id], function (err, rows, fields) {
 				if (!!err) {
-					data["product"] = "Error Updating data";
+					data["product"] = "Error Actualizado datos";
 					console.log(err);
 				} else {
 					data["error"] = 0;
-					data["product"] = "Updated Book Successfully";
+					data["product"] = "registro actualizado";
 					console.log("Updated: " + [id, name, lastname, age]);
 				}
 				res.json(data);
@@ -158,13 +159,13 @@ app.post('/api/delete', function (req, res) {
 	console.log('DELETE Request :: /delete: ' + id);
     if (!!id) {
 		pool.getConnection(function (err, connection) {
-			connection.query("DELETE FROM students WHERE id=?",[id],function (err, rows, fields) {
+			connection.query("DELETE FROM estudiantes WHERE id=?",[id],function (err, rows, fields) {
 				if (!!err) {
-					data["product"] = "Error deleting data";
+					data["product"] = "error eliminando registro";
 					console.log(err);
 				} else {
 					data["product"] = 0;
-					data["product"] = "Delete product Successfully";
+					data["product"] = "Eliminado estudiante perfectamente";
 					console.log("Deleted: " + id);
 				}
 				res.json(data);
